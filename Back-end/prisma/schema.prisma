@@ -1,0 +1,57 @@
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum regraUsuario {
+ADMIN
+USUARIO
+}
+
+enum IdeiaStatus {
+PENDENTE
+ANALISE
+DESENVOLVIMENTO
+REJEITADA
+}
+
+model Usuario {
+id        String        @id
+email     String        @unique
+nome      String
+regra     regraUsuario  @default(USUARIO)
+createdAt DateTime      @default(now())
+
+Ideias   Ideia[]
+votos    Voto[]
+}
+
+model Ideia {
+id          String        @id @default(cuid())
+titulo      String    
+descricao   String 
+status      IdeiaStatus   @default(PENDENTE)
+idUsuario   String        
+createdAt   DateTime      @default(now())
+
+usuario   Usuario     @relation(fields: [idUsuario], references: [id])
+votos     Voto[]
+}
+
+model Voto {
+id          String    @id @default(cuid())
+idUsuario   String    
+idIdeia     String    
+createdAt   DateTime  @default(now())
+
+usuario   Usuario   @relation(fields: [idUsuario], references: [id])
+ideia     Ideia     @relation(fields: [idIdeia], references: [id])
+
+@@unique([idUsuario, idIdeia])
+}
