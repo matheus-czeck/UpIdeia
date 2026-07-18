@@ -1,3 +1,5 @@
+import { regraUsuario } from "../../generated/prisma/enums.js"
+
 type UsuarioDTO = {
     id: string,
     nome: string,
@@ -8,7 +10,7 @@ export default class UsuarioEntity {
     id: string
     nome: string
     email: string
-    regra: string
+    regra: regraUsuario
 
   constructor(data: UsuarioDTO) {
     if(!data.nome){

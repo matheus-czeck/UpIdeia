@@ -1,4 +1,4 @@
-type VotoDTO = {
+export type VotoDTO = {
     id: string,
     idUsuario: string,
     idIdeia: string

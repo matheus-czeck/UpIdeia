@@ -1,4 +1,6 @@
-type IdeiaDTO = {
+import { IdeiaStatus } from "../../generated/prisma/enums.js";
+
+export type IdeiaDTO = {
   id: string;
   titulo: string;
   descricao: string;
@@ -9,7 +11,7 @@ export default class IdeiaEntity {
   id: string;
   titulo: string;
   descricao: string;
-  status: string;
+  status: IdeiaStatus;
   idUsuario: string;
 
   constructor(data: IdeiaDTO) {
