@@ -1,3 +1,4 @@
+import AppError from "../shared/errors/app.error.js";
 import { prisma } from "../shared/prisma.js";
 import { VotoDTO } from "./voto.entity.js";
 
@@ -7,7 +8,7 @@ class VotoService {
       where: { id: data.idIdeia },
     });
     if (ideia?.idUsuario === data.idUsuario) {
-      throw new Error("Voce nao pode votar na propria ideia!");
+      throw new AppError("Voce nao pode votar na propria ideia!", 403);
     }
 
     const votoExiste = await prisma.voto.findUnique({
@@ -20,7 +21,7 @@ class VotoService {
     });
 
     if (votoExiste) {
-      throw new Error("Voto ja registrado!");
+      throw new AppError("Voto ja registrado!", 409);
     }
 
     return await prisma.voto.create({ data });

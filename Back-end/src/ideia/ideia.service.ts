@@ -1,4 +1,5 @@
 import { IdeiaStatus } from "../../generated/prisma/enums.js";
+import AppError from "../shared/errors/app.error.js";
 import { prisma } from "../shared/prisma.js";
 import IdeiaEntity, { IdeiaDTO } from "./ideia.entity.js";
 
@@ -17,7 +18,7 @@ class IdeiaService {
       where: { id },
     });
 
-    if (!ideia) throw new Error("Ideia nao encontrada.");
+    if (!ideia) throw new AppError("Ideia nao encontrada.", 404);
 
     const ideiaAtualizada = await prisma.ideia.update({
       where: {

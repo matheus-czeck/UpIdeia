@@ -1,0 +1,23 @@
+import { Request, Response, NextFunction } from "express";
+import { supabase } from "../supabase.js";
+
+class AuthMidlleware {
+  static async validar(req: Request, res: Response, next: NextFunction) {
+    const authHeader = req.headers.authorization;
+    const token = authHeader?.split(" ")[1];
+
+    if (!token) {
+      return res.status(401).json({ error: "Token nao fornecido" });
+    }
+    const { data, error } = await supabase.auth.getUser(token);
+
+    if (error || !data.user) {
+      return res.status(401).json({ error: "Token invalido." });
+    }
+
+    req.usuario = data.user
+    next();
+  }
+}
+
+export default AuthMidlleware;

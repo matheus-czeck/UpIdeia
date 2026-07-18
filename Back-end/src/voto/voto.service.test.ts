@@ -26,7 +26,7 @@ describe("VotoService", () => {
     vi.mocked(prisma.voto.create).mockResolvedValue(votoFake);
 
     const novoVoto = await VotoService.registrarVoto({
-      id: "123",
+  
       idUsuario: "usuario1",
       idIdeia: "ideia1",
     });
@@ -36,7 +36,7 @@ describe("VotoService", () => {
 
   it("Deve retornar erro para ja votado", async () => {
     const votoFake = {
-      id: "123",
+      id:"123",
       idUsuario: "usuario1",
       idIdeia: "ideia1",
       createdAt: new Date(),
@@ -46,7 +46,6 @@ describe("VotoService", () => {
 
     await expect(
       VotoService.registrarVoto({
-        id: "123",
         idUsuario: "usuario1",
         idIdeia: "ideia1",
       }),
@@ -67,7 +66,6 @@ describe("VotoService", () => {
 
     await expect(
       VotoService.registrarVoto({
-        id: "123",
         idUsuario: "usuario1",
         idIdeia: "ideia1",
       }),

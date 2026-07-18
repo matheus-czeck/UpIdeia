@@ -1,6 +1,6 @@
 import { regraUsuario } from "../../generated/prisma/enums.js"
 
-type UsuarioDTO = {
+export type UsuarioDTO = {
     id: string,
     nome: string,
     email: string
