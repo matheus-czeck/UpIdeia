@@ -5,6 +5,7 @@ export type UsuarioDTO = {
     id: string,
     nome: string,
     email: string
+    
 }
 
 export default class UsuarioEntity {

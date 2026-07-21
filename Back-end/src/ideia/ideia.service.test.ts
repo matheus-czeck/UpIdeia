@@ -43,7 +43,6 @@ describe("IdeiaService", () => {
     vi.mocked(prisma.ideia.create).mockResolvedValue(ideiaFake);
 
     const novaIdeia = await IdeiaService.criarNovaIdeia({
-      id: "123",
       titulo: "novaIdeia",
       descricao: "descNovaIdeia",
       idUsuario: "usuario1",

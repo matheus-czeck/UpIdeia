@@ -27,7 +27,6 @@ describe("UsuarioService", () => {
       id: "123",
       nome: "matheus",
       email: "matheus@gmail.com",
-      regra: "USUARIO",
     });
     expect(resultado).toEqual(usuarioFake);
     expect(prisma.usuario.create).toHaveBeenCalledWith({
