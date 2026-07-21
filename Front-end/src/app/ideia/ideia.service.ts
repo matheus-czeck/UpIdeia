@@ -11,6 +11,9 @@ export interface Ideia {
   status: string;
   idUsuario: string;
   createAt: string;
+  _count?: {
+    votos: number;
+  };
 }
 
 @Injectable({

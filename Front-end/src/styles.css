@@ -1,1 +1,75 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap');
+
+:root {
+  --primary-color: #4C7CFF;
+  --primary-color-text: #0A0F1C;
+  --surface-ground: #0A0F1C;
+  --surface-section: #0A0F1C;
+  --surface-card: #121826;
+  --surface-overlay: #1E2839;
+  --surface-border: #232E42;
+  --surface-hover: #1A2333;
+  --text-color: #EAEEF7;
+  --text-color-secondary: #8993AC;
+  --font-family: 'Inter', sans-serif;
+
+  /* Tokens próprios do UpIdeia */
+  --up-bg: #0A0F1C;
+  --up-surface: #121826;
+  --up-surface-hover: #1A2333;
+  --up-border: #232E42;
+  --up-border-strong: #2E3B54;
+  --up-text: #EAEEF7;
+  --up-text-muted: #8993AC;
+  --up-text-faint: #5C6680;
+  --up-accent: #4C7CFF;
+  --up-accent-strong: #6B93FF;
+  --up-accent-dim: rgba(76, 124, 255, 0.14);
+  --up-rise: #2DD4BF;
+  --up-rise-dim: rgba(45, 212, 191, 0.14);
+  --up-warn: #F5A524;
+  --up-warn-dim: rgba(245, 165, 36, 0.14);
+  --up-danger: #F2495C;
+  --up-danger-dim: rgba(242, 73, 92, 0.12);
+
+  --font-display: 'Sora', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--up-bg);
+  color: var(--up-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+a {
+  color: var(--up-accent);
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--up-accent-dim);
+  color: var(--up-text);
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--up-bg); }
+::-webkit-scrollbar-thumb { background: var(--up-border-strong); border-radius: 8px; }

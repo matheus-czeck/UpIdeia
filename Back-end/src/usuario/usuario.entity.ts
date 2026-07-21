@@ -1,4 +1,5 @@
 import { regraUsuario } from "../../generated/prisma/enums.js"
+import AppError from "../shared/errors/app.error.js"
 
 export type UsuarioDTO = {
     id: string,
@@ -14,11 +15,11 @@ export default class UsuarioEntity {
 
   constructor(data: UsuarioDTO) {
     if(!data.nome){
-        throw new Error("Nome e obrigatorio!")
+        throw new AppError("Nome e obrigatorio!", 400)
     }
     const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if(!data.email || !emailValido.test(data.email)){
-        throw new Error("Email vazio ou formato invalido!")
+        throw new AppError("Email vazio ou formato invalido!", 400)
     }
     
 

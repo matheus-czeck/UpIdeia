@@ -1,14 +1,27 @@
-<div class="admin-container">
-  <h2>Painel Admin</h2>
+<div class="admin-shell">
+  <header class="admin-header">
+    <span class="admin-kicker">Painel administrativo</span>
+    <h1>Gerenciar ideias</h1>
+    <p class="admin-subtitle">Atualize o status conforme cada sugestão avança.</p>
+  </header>
 
-  <p *ngIf="erro" class="erro">{{ erro }}</p>
+  <p-message *ngIf="erro" severity="error" [text]="erro" styleClass="w-full mb-3"></p-message>
 
-  <div *ngFor="let ideia of ideias" class="ideia-card">
-    <h3>{{ ideia.titulo }}</h3>
-    <p>{{ ideia.descricao }}</p>
+  <div class="admin-list">
+    <div class="admin-row" *ngFor="let ideia of ideias">
+      <div class="admin-info">
+        <h3>{{ ideia.titulo }}</h3>
+        <p>{{ ideia.descricao }}</p>
+        <span class="admin-meta"><i class="pi pi-thumbs-up"></i> {{ ideia._count?.votos ?? 0 }} votos</span>
+      </div>
 
-    <select [(ngModel)]="ideia.status" (change)="mudarStatus(ideia.id, ideia.status)">
-      <option *ngFor="let s of status" [value]="s">{{ s }}</option>
-    </select>
+      <select
+        class="status-select"
+        [ngModel]="ideia.status"
+        (ngModelChange)="mudarStatus(ideia.id, $event)"
+      >
+        <option *ngFor="let s of status" [value]="s">{{ s }}</option>
+      </select>
+    </div>
   </div>
 </div>

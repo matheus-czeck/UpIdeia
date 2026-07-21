@@ -1,4 +1,5 @@
 import { IdeiaStatus } from "../../generated/prisma/enums.js";
+import AppError from "../shared/errors/app.error.js";
 
 export type IdeiaDTO = {
   titulo: string;
@@ -14,10 +15,10 @@ export default class IdeiaEntity {
 
   constructor(data: IdeiaDTO) {
     if (!data.titulo) {
-      throw new Error("Titulo e obrigatorio");
+      throw new AppError("Titulo e obrigatorio", 400);
     }
     if (!data.descricao) {
-      throw new Error("Descricao e obrigatorio");
+      throw new AppError("Descricao e obrigatorio", 400);
     }
 
     this.titulo = data.titulo;

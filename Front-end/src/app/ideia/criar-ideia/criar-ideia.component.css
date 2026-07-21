@@ -1,0 +1,86 @@
+.form-shell {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+.form-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--up-text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-back:hover {
+  color: var(--up-text);
+}
+
+.form-card {
+  background: var(--up-surface);
+  border: 1px solid var(--up-border);
+  border-radius: 20px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  box-shadow: 0 20px 60px -30px rgba(0, 0, 0, 0.6);
+}
+
+.form-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--up-accent-strong);
+}
+
+.form-card h1 {
+  font-size: 1.6rem;
+  color: var(--up-text);
+  line-height: 1.3;
+}
+
+.form-subtitle {
+  color: var(--up-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  margin: -0.4rem 0 0.5rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-field label {
+  font-size: 0.85rem;
+  color: var(--up-text-muted);
+  font-weight: 500;
+}
+
+.form-textarea {
+  width: 100%;
+  background: var(--up-surface) !important;
+  border: 1px solid var(--up-border);
+  border-radius: 8px;
+  color: var(--up-text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 0.75rem;
+  resize: vertical;
+}
+
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--up-accent);
+  box-shadow: 0 0 0 1px var(--up-accent);
+}
+
+.form-submit {
+  margin-top: 0.4rem;
+  height: 2.8rem;
+  font-weight: 600;
+}

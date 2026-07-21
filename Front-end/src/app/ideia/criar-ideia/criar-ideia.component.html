@@ -1,10 +1,23 @@
-<div class="criar-container">
-  <h2>Nova ideia</h2>
+<div class="form-shell">
+  <a routerLink="/" class="form-back"><i class="pi pi-arrow-left"></i> Voltar para as ideias</a>
 
-  <input type="text" [(ngModel)]="titulo" placeholder="Título" />
-  <textarea [(ngModel)]="descricao" placeholder="Descreva sua ideia"></textarea>
+  <div class="form-card">
+    <span class="form-kicker">Nova sugestão</span>
+    <h1>Qual melhoria você gostaria de ver?</h1>
+    <p class="form-subtitle">Descreva com clareza — quanto mais específico, mais fácil para a comunidade votar e para o time avaliar.</p>
 
-  <button (click)="criar()">Enviar ideia</button>
+    <div class="form-field">
+      <label for="titulo">Título</label>
+      <input id="titulo" type="text" pInputText [(ngModel)]="titulo" placeholder="Ex: Modo escuro no painel" class="w-full" />
+    </div>
 
-  <p *ngIf="erro" class="erro">{{ erro }}</p>
+    <div class="form-field">
+      <label for="descricao">Descrição</label>
+      <textarea id="descricao" [(ngModel)]="descricao" rows="5" class="form-textarea" placeholder="Explique o problema que isso resolve ou a ideia em detalhes..."></textarea>
+    </div>
+
+    <p-message *ngIf="erro" severity="error" [text]="erro" styleClass="w-full"></p-message>
+
+    <button pButton label="Enviar ideia" icon="pi pi-send" (click)="criar()" class="w-full form-submit"></button>
+  </div>
 </div>

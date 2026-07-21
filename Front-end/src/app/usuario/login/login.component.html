@@ -1,10 +1,37 @@
-<div class="login-container">
-  <h2>Entrar</h2>
+<div class="auth-shell">
+  <div class="auth-brand">
+    <div class="auth-brand-grid"></div>
+    <div class="auth-brand-content">
+      <span class="auth-kicker">UpIdeia</span>
+      <h1>Sugira. Vote. Acompanhe.</h1>
+      <p>O espaço onde as melhores ideias sobem ao topo — decididas por quem usa, priorizadas por quem constrói.</p>
+    </div>
+  </div>
 
-  <input type="email" [(ngModel)]="email" placeholder="Email" />
-  <input type="password" [(ngModel)]="password" placeholder="Senha" />
+  <div class="auth-panel">
+    <div class="auth-form-card">
+      <span class="auth-kicker auth-kicker--mobile">UpIdeia</span>
+      <h2>Entrar na conta</h2>
+      <p class="auth-subtitle">Acesse para votar e sugerir novas ideias.</p>
 
-  <button (click)="entrar()">Entrar</button>
+      <div class="auth-field">
+        <label for="email">Email</label>
+        <span class="p-input-icon-left w-full">
+          <i class="pi pi-envelope"></i>
+          <input id="email" type="email" pInputText [(ngModel)]="email" placeholder="voce@empresa.com" class="w-full" />
+        </span>
+      </div>
 
-  <p *ngIf="erro" class="erro">{{ erro }}</p>
+      <div class="auth-field">
+        <label for="password">Senha</label>
+        <p-password inputId="password" [(ngModel)]="password" placeholder="••••••••" [toggleMask]="true" [feedback]="false" styleClass="w-full" inputStyleClass="w-full"></p-password>
+      </div>
+
+      <p-message *ngIf="erro" severity="error" [text]="erro" styleClass="w-full"></p-message>
+
+      <button pButton label="Entrar" icon="pi pi-arrow-right" iconPos="right" (click)="entrar()" class="w-full auth-submit"></button>
+
+      <p class="auth-switch">Ainda não tem conta? <a routerLink="/cadastro">Criar conta</a></p>
+    </div>
+  </div>
 </div>

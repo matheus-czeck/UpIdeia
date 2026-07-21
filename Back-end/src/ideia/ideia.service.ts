@@ -5,7 +5,18 @@ import IdeiaEntity, { IdeiaDTO } from "./ideia.entity.js";
 
 class IdeiaService {
   static async buscarIdeias() {
-    return await prisma.ideia.findMany();
+    return await prisma.ideia.findMany({
+      include: {
+        _count: {
+          select: {votos: true}
+        }
+      },
+      orderBy: {
+        votos: {
+          _count: 'desc'
+        }
+      }
+    });
   }
 
   static async criarNovaIdeia(data: IdeiaDTO) {

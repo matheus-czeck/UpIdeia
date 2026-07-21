@@ -1,11 +1,42 @@
-<div class="cadastro-container">
-  <h2>Criar conta</h2>
+<div class="auth-shell">
+  <div class="auth-brand">
+    <div class="auth-brand-grid"></div>
+    <div class="auth-brand-content">
+      <span class="auth-kicker">UpIdeia</span>
+      <h1>Sua ideia pode ser a próxima a sair do papel.</h1>
+      <p>Crie sua conta, sugira melhorias e ajude a decidir o que será construído a seguir.</p>
+    </div>
+  </div>
 
-  <input type="text" [(ngModel)]="nome" placeholder="Nome" />
-  <input type="email" [(ngModel)]="email" placeholder="Email" />
-  <input type="password" [(ngModel)]="password" placeholder="Senha" />
+  <div class="auth-panel">
+    <div class="auth-form-card">
+      <span class="auth-kicker auth-kicker--mobile">UpIdeia</span>
+      <h2>Criar conta</h2>
+      <p class="auth-subtitle">Leva menos de um minuto.</p>
 
-  <button (click)="cadastrar()">Cadastrar</button>
+      <div class="auth-field">
+        <label for="nome">Nome</label>
+        <input id="nome" type="text" pInputText [(ngModel)]="nome" placeholder="Seu nome" class="w-full" />
+      </div>
 
-  <p *ngIf="erro" class="erro">{{ erro }}</p>
+      <div class="auth-field">
+        <label for="email">Email</label>
+        <span class="p-input-icon-left w-full">
+          <i class="pi pi-envelope"></i>
+          <input id="email" type="email" pInputText [(ngModel)]="email" placeholder="voce@empresa.com" class="w-full" />
+        </span>
+      </div>
+
+      <div class="auth-field">
+        <label for="password">Senha</label>
+        <p-password inputId="password" [(ngModel)]="password" placeholder="••••••••" [toggleMask]="true" styleClass="w-full" inputStyleClass="w-full"></p-password>
+      </div>
+
+      <p-message *ngIf="erro" severity="error" [text]="erro" styleClass="w-full"></p-message>
+
+      <button pButton label="Criar conta" icon="pi pi-arrow-right" iconPos="right" (click)="cadastrar()" class="w-full auth-submit"></button>
+
+      <p class="auth-switch">Já tem conta? <a routerLink="/login">Entrar</a></p>
+    </div>
+  </div>
 </div>

@@ -1,14 +1,18 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { InputTextModule } from 'primeng/inputtext';
+import { PasswordModule } from 'primeng/password';
+import { ButtonModule } from 'primeng/button';
+import { MessageModule } from 'primeng/message';
 import { AuthService } from '../../core/auth.service';
 
 
 @Component({
   selector: 'app-cadastro',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule, RouterLink,InputTextModule, PasswordModule, ButtonModule, MessageModule ],
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.css'
 })

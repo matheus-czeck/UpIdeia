@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { MessageModule } from 'primeng/message';
 import { IdeiaService, Ideia } from '../ideia.service';
 import { VotoService } from '../../voto/voto.service';
 import { AuthService } from '../../core/auth.service';
@@ -8,11 +9,11 @@ import { AuthService } from '../../core/auth.service';
 @Component({
   selector: 'app-lista-ideias',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, MessageModule],
   templateUrl: './lista-ideias.component.html',
   styleUrl: './lista-ideias.component.css'
 })
-export class ListaIdeiasComponent {
+export class ListaIdeiasComponent implements OnInit {
   ideias: Ideia[] = []
   erro = ''
 

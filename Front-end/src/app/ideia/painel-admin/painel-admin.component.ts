@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule} from '@angular/common';
-import { IdeiaService, Ideia } from '../ideia.service';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MessageModule } from 'primeng/message';
+import { IdeiaService, Ideia } from '../ideia.service';
 
 @Component({
   selector: 'app-painel-admin',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule,FormsModule, MessageModule],
   templateUrl: './painel-admin.component.html',
   styleUrl: './painel-admin.component.css',
 })

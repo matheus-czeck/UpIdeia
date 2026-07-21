@@ -1,19 +1,45 @@
-<div class="lista-container">
-  <h2>Ideias da comunidade</h2>
+<div class="board-shell">
+  <header class="board-header">
+    <div>
+      <span class="board-kicker">UpIdeia</span>
+      <h1>Ideias da comunidade</h1>
+      <p class="board-subtitle">Ordenadas pelas mais votadas. Vote nas que você também gostaria de ver acontecer.</p>
+    </div>
 
-  <div *ngIf="authService.getToken()">
-    <a routerLink="/criar-ideia">+ Nova ideia</a>
+    <div>
+      <a *ngIf="authService.getToken()" routerLink="/criar-ideia" class="board-cta">
+        <i class="pi pi-plus"></i> Nova ideia
+      </a>
+      <a *ngIf="!authService.getToken()" routerLink="/login" class="board-cta board-cta--ghost">
+        Entrar para sugerir
+      </a>
+    </div>
+  </header>
+
+  <p-message *ngIf="erro" severity="error" [text]="erro" styleClass="w-full mb-3"></p-message>
+
+  <div class="board-list" *ngIf="ideias.length; else vazio">
+    <div class="idea-row" *ngFor="let ideia of ideias; let i = index">
+      <span class="idea-rank">{{ i + 1 }}</span>
+
+      <button class="vote-riser" (click)="votar(ideia.id)" [disabled]="!authService.getToken()">
+        <i class="pi pi-chevron-up"></i>
+        <span>{{ ideia._count?.votos ?? 0 }}</span>
+      </button>
+
+      <div class="idea-body">
+        <h3>{{ ideia.titulo }}</h3>
+        <p>{{ ideia.descricao }}</p>
+        <span class="status-tag" [ngClass]="'status-' + ideia.status.toLowerCase()">{{ ideia.status }}</span>
+      </div>
+    </div>
   </div>
 
-  <p *ngIf="erro" class="erro">{{ erro }}</p>
-
-  <div *ngFor="let ideia of ideias" class="ideia-card">
-    <h3>{{ ideia.titulo }}</h3>
-    <p>{{ ideia.descricao }}</p>
-    <span class="status">{{ ideia.status }}</span>
-
-    <button *ngIf="authService.getToken()" (click)="votar(ideia.id)">
-      👍 Votar
-    </button>
-  </div>
+  <ng-template #vazio>
+    <div class="board-empty">
+      <i class="pi pi-inbox"></i>
+      <h3>Nenhuma ideia por aqui ainda</h3>
+      <p>Seja a primeira pessoa a sugerir uma melhoria.</p>
+    </div>
+  </ng-template>
 </div>
