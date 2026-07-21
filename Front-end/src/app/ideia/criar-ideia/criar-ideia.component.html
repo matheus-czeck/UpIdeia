@@ -1,0 +1,10 @@
+<div class="criar-container">
+  <h2>Nova ideia</h2>
+
+  <input type="text" [(ngModel)]="titulo" placeholder="Título" />
+  <textarea [(ngModel)]="descricao" placeholder="Descreva sua ideia"></textarea>
+
+  <button (click)="criar()">Enviar ideia</button>
+
+  <p *ngIf="erro" class="erro">{{ erro }}</p>
+</div>

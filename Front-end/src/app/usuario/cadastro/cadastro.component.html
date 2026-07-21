@@ -1,0 +1,11 @@
+<div class="cadastro-container">
+  <h2>Criar conta</h2>
+
+  <input type="text" [(ngModel)]="nome" placeholder="Nome" />
+  <input type="email" [(ngModel)]="email" placeholder="Email" />
+  <input type="password" [(ngModel)]="password" placeholder="Senha" />
+
+  <button (click)="cadastrar()">Cadastrar</button>
+
+  <p *ngIf="erro" class="erro">{{ erro }}</p>
+</div>

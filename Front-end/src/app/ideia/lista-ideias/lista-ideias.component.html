@@ -1,0 +1,19 @@
+<div class="lista-container">
+  <h2>Ideias da comunidade</h2>
+
+  <div *ngIf="authService.getToken()">
+    <a routerLink="/criar-ideia">+ Nova ideia</a>
+  </div>
+
+  <p *ngIf="erro" class="erro">{{ erro }}</p>
+
+  <div *ngFor="let ideia of ideias" class="ideia-card">
+    <h3>{{ ideia.titulo }}</h3>
+    <p>{{ ideia.descricao }}</p>
+    <span class="status">{{ ideia.status }}</span>
+
+    <button *ngIf="authService.getToken()" (click)="votar(ideia.id)">
+      👍 Votar
+    </button>
+  </div>
+</div>

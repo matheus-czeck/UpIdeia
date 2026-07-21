@@ -1,0 +1,14 @@
+<div class="admin-container">
+  <h2>Painel Admin</h2>
+
+  <p *ngIf="erro" class="erro">{{ erro }}</p>
+
+  <div *ngFor="let ideia of ideias" class="ideia-card">
+    <h3>{{ ideia.titulo }}</h3>
+    <p>{{ ideia.descricao }}</p>
+
+    <select [(ngModel)]="ideia.status" (change)="mudarStatus(ideia.id, ideia.status)">
+      <option *ngFor="let s of status" [value]="s">{{ s }}</option>
+    </select>
+  </div>
+</div>

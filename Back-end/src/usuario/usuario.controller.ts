@@ -27,10 +27,15 @@ class UsuarioController {
       password,
     });
     if (error || !data.session) {
-      throw new AppError("Email ou senha invalidos", 401)
+      throw new AppError("Email ou senha invalidos", 401);
     }
 
-    res.status(200).json({ token: data.session.access_token });
+    const usuario = await UsuarioService.buscarPorId(data.user.id);
+
+    res.status(200).json({
+      token: data.session.access_token,
+      regra: usuario.regra,
+    });
   }
 }
 
