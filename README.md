@@ -2,7 +2,7 @@
 
 <h1>💡 UpIdeia</h1>
 
-<p>Micro-SaaS de sugestões com upvotes — usuários propõem melhorias, a comunidade vota, e um administrador decide o que sai do papel.</p>
+<p>Micro-SaaS de sugestões com upvotes, usuários propõem melhorias, a comunidade vota, e um administrador decide o que sai do papel.</p>
 
 ![Status](https://img.shields.io/badge/status-finalizado-brightgreen?style=flat-square)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=flat-square&logo=typescript&logoColor=white)
@@ -16,9 +16,9 @@
 
 ## 📖 Sobre o projeto
 
-O **UpIdeia** nasceu como um exercício proposto pelo meu mentor: construir um Micro-SaaS completo, do banco de dados ao deploy, aplicando conceitos mais avançados de arquitetura. A proposta é simples de entender — usuários sugerem melhorias, outros usuários votam, e um administrador decide o que será desenvolvido — mas rica o suficiente para praticar Domain-Driven Design, TDD e autenticação real com Supabase Auth.
+O **UpIdeia** nasceu como um exercício proposto pelo meu mentor: construir um Micro-SaaS completo, do banco de dados ao deploy, aplicando conceitos mais avançados de arquitetura. A proposta é simples de entender, usuários sugerem melhorias, outros usuários votam, e um administrador decide o que será desenvolvido. Mas rica o suficiente para praticar Domain-Driven Design, TDD e autenticação real com Supabase Auth.
 
-Por ser propositalmente genérico (sem um contexto fixo de "melhorias de quê"), o UpIdeia foi pensado para ser reaproveitado futuramente em outros contextos — como um espaço de sugestões dentro do próprio portfólio.
+Por ser propositalmente genérico (sem um contexto fixo de "melhorias de quê"), o UpIdeia foi pensado para ser reaproveitado futuramente em outros contextos, como um espaço de sugestões dentro do próprio portfólio.
 
 > Projeto desenvolvido para praticar arquitetura orientada a domínio (DDD), TDD, autenticação real com Supabase e deploy completo com pipeline de CI.
 
@@ -28,7 +28,7 @@ Por ser propositalmente genérico (sem um contexto fixo de "melhorias de quê"),
 
 - [x] Cadastro e login de usuários via Supabase Auth
 - [x] Envio de sugestões de melhoria pelos usuários autenticados
-- [x] Sistema de upvote — um voto por usuário em cada ideia
+- [x] Sistema de upvote, um voto por usuário em cada ideia
 - [x] Bloqueio de voto duplicado e de voto na própria ideia
 - [x] Painel administrativo para atualizar o status das ideias
 - [x] Listagem pública ordenada pelas ideias mais votadas
@@ -67,7 +67,7 @@ Por ser propositalmente genérico (sem um contexto fixo de "melhorias de quê"),
 
 ## 🏗️ Arquitetura
 
-Organizado por **domínio (DDD)** em vez de camada técnica — cada pasta concentra tudo sobre aquele assunto (entity, service, controller e rotas).
+Organizado por **domínio (DDD)** em vez de camada técnica, cada pasta concentra tudo sobre aquele assunto (entity, service, controller e rotas).
 
 ```
 UpIdeia/
@@ -131,9 +131,9 @@ npm install
 cp .env.example .env
 
 # Edite o .env com as credenciais do seu projeto Supabase:
-# DATABASE_URL="postgresql://...pooler.supabase.com:6543/postgres?pgbouncer=true"
-# DIRECT_URL="postgresql://...pooler.supabase.com:5432/postgres"
-# SUPABASE_URL="https://[project-ref].supabase.co"
+# DATABASE_URL=" "
+# DIRECT_URL=" "
+# SUPABASE_URL=" "
 # SUPABASE_ANON_KEY=""
 # SUPABASE_SERVICE_ROLE_KEY=""
 # PORT=3000
@@ -225,7 +225,7 @@ model Voto {
 ## 👨‍💻 Autor
 
 **Matheus Henrique Czeck**
-Estudante de Engenharia de Software · Dev Web Full Stack em formação
+Estudante de Engenharia de Software · Dev Web Full Stack 
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-matheus--hcz-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/matheus-hcz/)
 [![GitHub](https://img.shields.io/badge/GitHub-matheus--czeck-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/matheus-czeck)
