@@ -37,7 +37,7 @@
 .auth-kicker {
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 1.4rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--up-accent-strong);

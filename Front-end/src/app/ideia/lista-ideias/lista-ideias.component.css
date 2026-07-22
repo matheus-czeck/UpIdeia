@@ -1,3 +1,5 @@
+
+
 .board-shell {
   max-width: 760px;
   margin: 0 auto;
@@ -16,7 +18,7 @@
 .board-kicker {
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 1.2rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--up-accent-strong);
@@ -72,7 +74,7 @@
 
 .idea-row {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   gap: 1rem;
   padding: 1.1rem;
   background: var(--up-surface);
@@ -96,25 +98,39 @@
   font-weight: 600;
   color: var(--up-text-faint);
 }
+.quantity {
+  font-size: 1.2rem;
+  color: var(--up-rise);
+}
+.vote{
+text-transform: lowercase;
+color: var(--up-text-muted);
+}
 
 .vote-riser {
   flex-shrink: 0;
-  width: 56px;
+  width: 80%;
+  height: 30%;
   display: flex;
-  flex-direction: column;
+  margin-top: 1rem;
+  box-shadow: 0px 0px 6px 1px rgba(45, 212, 191, 0.63);
   align-items: center;
   justify-content: center;
-  gap: 0.2rem;
+  gap: 2px;
   padding: 0.6rem 0;
   background: var(--up-rise-dim);
   border: 1px solid transparent;
   border-radius: 12px;
   color: var(--up-rise);
   cursor: pointer;
+  text-transform: uppercase;
   font-family: var(--font-mono);
   font-weight: 600;
   font-size: 0.95rem;
-  transition: transform 0.12s ease, border-color 0.15s ease, background 0.15s ease;
+  transition:
+    transform 0.12s ease,
+    border-color 0.15s ease,
+    background 0.15s ease;
 }
 
 .vote-riser i {
@@ -133,6 +149,22 @@
 .vote-riser:disabled {
   opacity: 0.45;
   cursor: not-allowed;
+}
+
+.vote-quantity {
+  display: flex;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
+  gap: 0.2rem;
+  padding: 0.6rem 0;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.95rem;
 }
 
 .idea-body {

@@ -3,34 +3,62 @@
     <div>
       <span class="board-kicker">UpIdeia</span>
       <h1>Ideias da comunidade</h1>
-      <p class="board-subtitle">Ordenadas pelas mais votadas. Vote nas que você também gostaria de ver acontecer.</p>
+      <p class="board-subtitle">
+        Ordenadas pelas mais votadas. Vote nas que você também gostaria de ver
+        acontecer.
+      </p>
     </div>
 
     <div>
-      <a *ngIf="authService.getToken()" routerLink="/criar-ideia" class="board-cta">
+      <a
+        *ngIf="authService.getToken()"
+        routerLink="/criar-ideia"
+        class="board-cta"
+      >
         <i class="pi pi-plus"></i> Nova ideia
       </a>
-      <a *ngIf="!authService.getToken()" routerLink="/login" class="board-cta board-cta--ghost">
+      <a
+        *ngIf="!authService.getToken()"
+        routerLink="/login"
+        class="board-cta board-cta--ghost"
+      >
         Entrar para sugerir
       </a>
     </div>
   </header>
 
-  <p-message *ngIf="erro" severity="error" [text]="erro" styleClass="w-full mb-3"></p-message>
+  <p-message
+    *ngIf="erro"
+    severity="error"
+    [text]="erro"
+    styleClass="w-full mb-3"
+  ></p-message>
 
   <div class="board-list" *ngIf="ideias.length; else vazio">
     <div class="idea-row" *ngFor="let ideia of ideias; let i = index">
       <span class="idea-rank">{{ i + 1 }}</span>
 
-      <button class="vote-riser" (click)="votar(ideia.id)" [disabled]="!authService.getToken()">
-        <i class="pi pi-chevron-up"></i>
-        <span>{{ ideia._count?.votos ?? 0 }}</span>
-      </button>
-
       <div class="idea-body">
         <h3>{{ ideia.titulo }}</h3>
         <p>{{ ideia.descricao }}</p>
-        <span class="status-tag" [ngClass]="'status-' + ideia.status.toLowerCase()">{{ ideia.status }}</span>
+        <span
+          class="status-tag"
+          [ngClass]="'status-' + ideia.status.toLowerCase()"
+          >{{ ideia.status }}</span
+        >
+      </div>
+      <div class="vote-quantity">
+        <span class="quantity">{{ ideia._count?.votos ?? 0 }}</span>
+
+        <label class="vote">Votos</label>
+        <button
+          class="vote-riser"
+          (click)="votar(ideia.id)"
+          [disabled]="!authService.getToken()"
+        >
+          <span>up</span>
+          <i class="pi pi-angle-double-up" style="font-size: 1.5rem;"></i>
+        </button>
       </div>
     </div>
   </div>

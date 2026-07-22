@@ -6,10 +6,11 @@ import { IdeiaService, Ideia } from '../ideia.service';
 import { VotoService } from '../../voto/voto.service';
 import { AuthService } from '../../core/auth.service';
 
+
 @Component({
   selector: 'app-lista-ideias',
   standalone: true,
-  imports: [CommonModule, RouterLink, MessageModule],
+  imports: [CommonModule, RouterLink, MessageModule,],
   templateUrl: './lista-ideias.component.html',
   styleUrl: './lista-ideias.component.css'
 })
