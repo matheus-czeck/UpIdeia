@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 jobs: 
-  test-and-buil:
+  test-and-build:
     runs-on: ubuntu-latest
     defaults:
       run:
