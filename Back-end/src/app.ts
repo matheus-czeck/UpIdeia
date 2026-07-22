@@ -7,11 +7,17 @@ import { handlerErro } from "./shared/errors/handler.error.js";
 
 const app = express();
 
-app.use(cors({ origin: process.env.ALLOWED_ORIGINS }));
+app.use(
+  cors({
+    origin: process.env.ALLOWED_ORIGINS?.split(",") || [
+      "http://localhost:4200",
+    ],
+  }),
+);
 app.use(express.json());
 app.use("/usuario", usuarioRoutes);
-app.use("/ideias", ideiasRoutes)
-app.use("/voto", votoRouter)
-app.use(handlerErro)
+app.use("/ideias", ideiasRoutes);
+app.use("/voto", votoRouter);
+app.use(handlerErro);
 
 export default app;
