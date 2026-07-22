@@ -9,20 +9,20 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-      working-directory: Back-en
+        working-directory: Back-end
 
       steps:
         - name: Checkout do codigo
           uses: actions/checkout@v4
 
-        - name: Configura Node.js
+        - name: Configurar Node.js
           uses: actions/setup-node@v4
           with: 
             node-version: 22
             cache: npm 
-            cache-epenency-path: Back-en/package-lock.json
+            cache-epenency-path: Back-end/package-lock.json
 
-        - name: Instalar epenencias
+        - name: Instalar dependencias
           run: npm ci
 
         - name: Rodar testes
