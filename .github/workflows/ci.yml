@@ -35,3 +35,25 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test-and-build
+    steps:
+      - name: Deploy na VPS
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd ~/projetos/UpIdeia
+            git pull origin main
+            cd Back-end
+            npm ci
+            npx prisma generate
+            npx tsc
+            pm2 restart upideia-backend
+            cd ../Front-end
+            npm ci
+            ng build --configuration production
