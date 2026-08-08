@@ -40,6 +40,8 @@ export class AuthService {
     return localStorage.getItem('token');
   }
   logout() {
-    return localStorage.removeItem('token');
+    // Remove token and role to properly logout the user on client-side UI
+    localStorage.removeItem('token');
+    localStorage.removeItem('regra');
   }
 }

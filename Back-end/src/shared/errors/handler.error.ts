@@ -7,9 +7,9 @@ export function handlerErro(
   res: Response,
   next: NextFunction,
 ) {
+  
   if (error instanceof AppError) {
     return res.status(error.status).json({ error: error.message });
   }
-
   return res.status(500).json({ error: "Erro interno no servidor" });
 }

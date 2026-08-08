@@ -9,7 +9,7 @@
       </p>
     </div>
 
-    <div>
+    <div class="board-actions">
       <a
         *ngIf="authService.getToken()"
         routerLink="/criar-ideia"
@@ -17,6 +17,15 @@
       >
         <i class="pi pi-plus"></i> Nova ideia
       </a>
+
+      <button
+        *ngIf="authService.getToken()"
+        class="board-cta board-cta--ghost"
+        (click)="logout()"
+      >
+        Sair
+      </button>
+
       <a
         *ngIf="!authService.getToken()"
         routerLink="/login"
@@ -34,33 +43,42 @@
     styleClass="w-full mb-3"
   ></p-message>
 
+  <div class="board-controls">
+    <label for="status-select">Filtrar por status:</label>
+    <select id="status-select" [(ngModel)]="selectedStatus" (change)="aplicarFiltro()">
+      <option *ngFor="let s of statuses" [value]="s">{{ s || 'Todos' }}</option>
+    </select>
+  </div>
+
   <div class="board-list" *ngIf="ideias.length; else vazio">
-    <div class="idea-row" *ngFor="let ideia of ideias; let i = index">
-      <span class="idea-rank">{{ i + 1 }}</span>
+  <div class="idea-row" *ngFor="let ideia of ideias; let i = index">
+    <span class="idea-rank">{{ i + 1 }}</span>
 
-      <div class="idea-body">
-        <h3>{{ ideia.titulo }}</h3>
-        <p>{{ ideia.descricao }}</p>
-        <span
-          class="status-tag"
-          [ngClass]="'status-' + ideia.status.toLowerCase()"
-          >{{ ideia.status }}</span
-        >
-      </div>
-      <div class="vote-quantity">
-        <span class="quantity">{{ ideia._count?.votos ?? 0 }}</span>
-
-        <label class="vote">Votos</label>
-        <button
-          class="vote-riser"
-          (click)="votar(ideia.id)"
-          [disabled]="!authService.getToken()"
-        >
-          <span>up</span>
-          <i class="pi pi-angle-double-up" style="font-size: 1.5rem;"></i>
-        </button>
-      </div>
+    <div class="idea-body">
+      <h3>{{ ideia.titulo }}</h3>
+      <p>{{ ideia.descricao }}</p>
+      <span
+        class="status-tag"
+        [ngClass]="'status-' + ideia.status.toLowerCase()"
+        >{{ ideia.status }}</span
+      >
     </div>
+    <div class="vote-quantity">
+      <span class="quantity">{{ ideia._count?.votos ?? 0 }}</span>
+
+      <label class="vote">Votos</label>
+      <button
+        class="vote-riser"
+        (click)="votar(ideia.id)"
+        [disabled]="!authService.getToken()"
+        [ngClass]="{ 'voted': votos.has(ideia.id) }"
+      >
+        <span class="vote-label" *ngIf="votos.has(ideia.id)">votado</span>
+        <span class="vote-label" *ngIf="!votos.has(ideia.id)">up</span>
+        <i [class]="votos.has(ideia.id) ? 'pi pi-check' : 'pi pi-angle-double-up'" style="font-size: 1.1rem;"></i>
+      </button>
+    </div>
+  </div>
   </div>
 
   <ng-template #vazio>

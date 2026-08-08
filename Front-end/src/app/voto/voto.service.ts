@@ -13,4 +13,12 @@ export class VotoService {
   registrarVoto(idIdeia: string) {
     return this.http.post(`${apiUrl}/voto/${idIdeia}`, {});
   }
+
+  removerVoto(idIdeia: string) {
+    return this.http.delete(`${apiUrl}/voto/${idIdeia}`);
+  }
+
+  minhasIdeiasVotadas() {
+    return this.http.get<{ ids: string[] }>(`${apiUrl}/voto/me`);
+  }
 }

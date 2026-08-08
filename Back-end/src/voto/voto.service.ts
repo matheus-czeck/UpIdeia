@@ -26,6 +26,25 @@ class VotoService {
 
     return await prisma.voto.create({ data });
   }
+
+  static async buscarVotosPorUsuario(idUsuario: string) {
+    const votos = await prisma.voto.findMany({
+      where: { idUsuario },
+      select: { idIdeia: true },
+    });
+    return votos.map((v) => v.idIdeia);
+  }
+
+  static async removerVoto(idUsuario: string, idIdeia: string) {
+    const voto = await prisma.voto.findUnique({
+      where: { idUsuario_idIdeia: { idUsuario, idIdeia } },
+    });
+    if (!voto) {
+      throw new AppError('Voto nao encontrado', 404);
+    }
+    await prisma.voto.delete({ where: { id: voto.id } });
+    return;
+  }
 }
 
 export default VotoService;

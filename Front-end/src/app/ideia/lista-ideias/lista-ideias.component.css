@@ -72,6 +72,56 @@
   gap: 0.75rem;
 }
 
+/* Header action buttons layout */
+.board-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Ensure ghost CTA used for secondary buttons (logout) shows with subtle border and spacing */
+.board-actions .board-cta {
+  padding: 0.55rem 1rem;
+}
+
+.board-actions .board-cta--ghost {
+  background: transparent;
+  border: 1px solid var(--up-border-strong);
+  color: var(--up-text);
+}
+
+/* Filter controls styled to match project look */
+.board-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.board-controls label {
+  color: var(--up-text-muted);
+  font-size: 0.92rem;
+}
+
+.board-controls select {
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--up-border);
+  background: var(--up-surface);
+  color: var(--up-text);
+  font-size: 0.95rem;
+}
+
+/* Voted state for vote button */
+.vote-riser.voted,
+.vote-riser.voted:hover:not(:disabled) {
+  background: var(--up-rise);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 6px 18px rgba(45, 212, 191, 0.18);
+}
+
+
 .idea-row {
   display: flex;
   align-items: center;
@@ -109,15 +159,13 @@ color: var(--up-text-muted);
 
 .vote-riser {
   flex-shrink: 0;
-  width: 80%;
-  height: 30%;
-  display: flex;
-  margin-top: 1rem;
-  box-shadow: 0px 0px 6px 1px rgba(45, 212, 191, 0.63);
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 2px;
-  padding: 0.6rem 0;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  box-shadow: 0px 0px 6px 1px rgba(45, 212, 191, 0.63);
+  padding: 0.45rem 0.7rem;
   background: var(--up-rise-dim);
   border: 1px solid transparent;
   border-radius: 12px;
@@ -131,11 +179,22 @@ color: var(--up-text-muted);
     transform 0.12s ease,
     border-color 0.15s ease,
     background 0.15s ease;
+  white-space: nowrap;
+  min-width: 48px;
 }
 
 .vote-riser i {
-  font-size: 0.85rem;
+  font-size: 1.1rem;
+  line-height: 1;
 }
+
+.vote-riser .vote-label{
+  display: inline-block;
+  padding-right: 0.2rem;
+  text-transform: lowercase;
+  font-size: 0.9rem;
+}
+
 
 .vote-riser:hover:not(:disabled) {
   border-color: var(--up-rise);
