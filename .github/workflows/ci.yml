@@ -50,6 +50,7 @@ jobs:
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             cd ~/projetos/UpIdeia
+            git reset --hard HEAD
             git pull origin main
             cd Back-end
             npm ci
